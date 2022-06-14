@@ -13,10 +13,10 @@ class Ui {
   
 
     }
-    graj(wybrany, imie) {
+    graj(wybrany, imie, przeciwnik) {
         console.log("ok")
         document.getElementById("logowanie").style.visibility = "hidden"
-        game.genGraczJeden(wybrany, imie)
+        game.genGraczJeden(wybrany, imie, przeciwnik)
         document.getElementById("pasek").innerHTML = `</br>`+"Twój przeciwik jest gotowy. Wykonaj pierwszy ruch. Masz 30 sekund"
         game.tak()
     } 

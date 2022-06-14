@@ -12,7 +12,7 @@ class Game {
         this.sec = 0
         this.min = 0
         this.nick
-
+        this.konkurent
         this.wyszed = 0
         this.geometr = new THREE.BoxGeometry(200, 200, 200);
         this.materia = new THREE.MeshPhongMaterial({
@@ -132,7 +132,8 @@ class Game {
     }
 
 
-    genGraczJeden(wybrany, imie) {
+    genGraczJeden(wybrany, imie, ko) {
+        this.konkurent = ko
         this.nick = imie
         console.log("GRACZ JEDEN")
         this.timerCycle()
@@ -166,6 +167,9 @@ class Game {
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
                 if (this.pionki[i][j] > 0) {
+                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                        this.pionki[i][j] = 0
+                    }
                     let pionek = new Pionek(this.pionki[i][j])
                     pionek.position.y = 5
                     pionek.position.x = xx
@@ -197,7 +201,8 @@ class Game {
             // }
         }
     }
-    genGraczDwa(wybrany, imie) {
+    genGraczDwa(wybrany, imie, ko) {
+        this.konkurent = ko
         this.nick = imie
         this.timerCycle()
         console.log("GRACZ DWA")
@@ -235,6 +240,9 @@ class Game {
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
                 if (this.pionki[i][j] > 0) {
+                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                        this.pionki[i][j] = 0
+                    }
                     let pionek = new Pionek(this.pionki[i][j])
                     pionek.position.y = 5
                     pionek.position.x = xx

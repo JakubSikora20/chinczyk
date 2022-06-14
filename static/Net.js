@@ -34,7 +34,7 @@ class Net {
                     kolor = "czarnymi"
                     document.getElementById("pasek").innerHTML = `</br>` + "Witaj " + dat.imie + ", jesteś " + dat.kolor
                     document.getElementById("logowanie").style.visibility = "hidden"
-                    game.genGraczDwa(wybrany, dat.imie)
+                    game.genGraczDwa(wybrany, dat.imie, dat.przeciwnik)
                 } else if (dat.status == "pierwszy") {
                     kolor = "białymi"
                     document.getElementById("pasek").innerHTML = `</br>` + "Witaj " + dat.imie + ", jesteś " + dat.kolor
@@ -87,7 +87,7 @@ class Net {
                 odp = JSON.parse(data)
                 if (odp.liczba == 2) {
                     clearInterval(this.interval);
-                    ui.graj(wybrany, imie)
+                    ui.graj(wybrany, imie, odp.przeciwnik)
                 }
             }) // dane odpowiedzi z serwera
             .catch(error => console.log(error));

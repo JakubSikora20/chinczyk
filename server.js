@@ -38,6 +38,8 @@ let pionj
 let pionx
 let pionz
 let pionid
+let pierwszy
+let drugi
 let przeciwnik = "false"
 let kolory = ["zielony", "niebieski", "żółty", "czerwony"]
 app.post("/add", function (req, res) {
@@ -57,6 +59,7 @@ app.post("/add", function (req, res) {
     console.log(kolory)
     if (gracze.length == 0) {
         gracze.push(u)
+        pierwszy = dat.kolor
         res.end(JSON.stringify({ status: "pierwszy", imie: u, kolor: dat.kolor, }))
         console.log(gracze.length)
 
@@ -71,7 +74,9 @@ app.post("/add", function (req, res) {
             gracze.push(u)
             console.log(gracze)
             if (gracze.length == 2) {
-                res.end(JSON.stringify({ status: "drugi", imie: u, kolor: dat.kolor, }))
+                drugi = dat.kolor
+                res.end(JSON.stringify({ status: "drugi", imie: u, kolor: dat.kolor, przeciwnik: pierwszy}))
+
             } else if (gracze.length > 2) {
                 res.end(JSON.stringify({ status: "za dużo graczy" }))
             }
@@ -100,7 +105,7 @@ app.post("/reset", function (req, res) {
 })
 
 app.post("/czekam", function (req, res) {
-    res.end(JSON.stringify({ liczba: gracze.length }))
+    res.end(JSON.stringify({ liczba: gracze.length, przeciwnik: drugi }))
 })
 
 app.post("/aktualizacja_tablicy", function (req, res) {
@@ -130,20 +135,20 @@ app.post("/wygrana", function (req, res) {
     console.log("UP")
     przeciwnik = "wygrana"
     let dat = JSON.parse(req.body)
-    
+
     const doc = {
         sec: dat.sec,
         min: dat.min,
         nick: dat.nick
     };
-    
-    
+
+
     coll1.insert(doc, function (err, newDoc) {
         console.log("dodano dokument (obiekt):")
         console.log(newDoc)
-        console.log("losowe id dokumentu: "+newDoc._id)
+        console.log("losowe id dokumentu: " + newDoc._id)
     });
-   
+
     res.end(JSON.stringify({ status: "czekaj", }))
 
 
@@ -186,17 +191,17 @@ app.post("/kolor", function (req, res) {
 
 
 app.post("/wyniki", function (req, res) {
-    
-    coll1.find({ }, function (err, docs) {
+
+    coll1.find({}, function (err, docs) {
         //zwracam dane w postaci JSON
         console.log("----- tablica obiektów pobrana z bazy: \n")
         console.log(docs)
         console.log("----- sformatowany z wcięciami obiekt JSON: \n")
         console.log(JSON.stringify({ "docsy": docs }, null, 5))
-        res.end(JSON.stringify({"docsy": docs, }))
+        res.end(JSON.stringify({ "docsy": docs, }))
     });
-   
-  
+
+
 
 
 })
