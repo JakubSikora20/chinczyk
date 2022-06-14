@@ -166,10 +166,11 @@ class Game {
         let xx = -100
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
+                if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                    this.pionki[i][j] = 0
+                }
                 if (this.pionki[i][j] > 0) {
-                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
-                        this.pionki[i][j] = 0
-                    }
+
                     let pionek = new Pionek(this.pionki[i][j])
                     pionek.position.y = 5
                     pionek.position.x = xx
@@ -239,10 +240,11 @@ class Game {
         let xx = -100
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
+                if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                    this.pionki[i][j] = 0
+                }
                 if (this.pionki[i][j] > 0) {
-                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
-                        this.pionki[i][j] = 0
-                    }
+
                     let pionek = new Pionek(this.pionki[i][j])
                     pionek.position.y = 5
                     pionek.position.x = xx
