@@ -12,8 +12,6 @@ class Pionek extends THREE.Mesh {
         }else if (x==4){
             kolor = 0x0000FF//E6E6FA
         }
-        
-        
         this.geometry = new THREE.CylinderGeometry(7, 7, 10, 64);
         this.material = new THREE.MeshPhongMaterial({
             map: new THREE.TextureLoader().load('./img/drewno2.jpg'), // plik tekstury
