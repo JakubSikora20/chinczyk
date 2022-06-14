@@ -451,6 +451,7 @@ class Game {
                 this.pionki = data.tablica
                 document.getElementById("pasek").innerHTML = `</br>` + "Teraz twoja kolej. Wykonaj ruch. Masz 30 sekund"
                 document.getElementById('zegar').style.visibility = "hidden"
+                this.kostka = 0
                 clearTimeout(this.time);
                 this.tak()
                 this.scene.remove(this.cub);
