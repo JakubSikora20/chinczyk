@@ -135,6 +135,10 @@ class Game {
     genGraczJeden(wybrany, imie, ko) {
         this.konkurent = ko
         this.nick = imie
+        if (ko == "żółty") ko = 1
+        if (ko == "zielony") ko = 2
+        if (ko == "czerwony") ko = 3
+        if (ko == "niebieski") ko = 4
         console.log("GRACZ JEDEN")
         this.timerCycle()
         console.log(this.kostka)
@@ -203,6 +207,10 @@ class Game {
     }
     genGraczDwa(wybrany, imie, ko) {
         this.konkurent = ko
+        if (ko == "żółty") ko = 1
+        if (ko == "zielony") ko = 2
+        if (ko == "czerwony") ko = 3
+        if (ko == "niebieski") ko = 4
         this.nick = imie
         this.timerCycle()
         console.log("GRACZ DWA")
@@ -237,6 +245,7 @@ class Game {
 
         let zz = -100
         let xx = -100
+        console.log(ko)
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
                 if (this.pionki[i][j] > 0) {
