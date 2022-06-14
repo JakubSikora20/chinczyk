@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projekt</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="libs/tween.umd.js"></script>
+    <script src="three.js" defer></script>
+    <script src="Field.js" defer></script>
+    <script src="Pionek.js" defer></script>
+    <script src="Game.js" defer></script>
+    <script src="Net.js" defer></script>
+    <script src="Ui.js" defer></script>
+    <script src="Main.js" defer></script>
+</head>
+
+
+<body onkeydown="game.kroki(event)">
+    <div id="logowanie">
+    </div>
+    <div id="pasek"> STATUS</div>
+    <div id="root"></div>
+    <div id="dane"></div>
+    <div id="zegar">Z</div>
+    <div id="wyniki"></div>
+    <script>
+        let jk = 90
+        let sto
+        sto = true
+        function kolor() {
+
+            console.log("kol")
+            // console.log("PO")
+            //   const data = JSON.stringify({ kolor: "yes" })
+            const options = {
+                method: "POST",
+                //   body: data
+            };
+
+            fetch("/kolor", options)
+                .then(response => response.text()) // konwersja na json
+                .then(data => {
+                    // console.log("POR")
+
+                    console.log(data)
+
+                    kolory = JSON.parse(data)
+                    ile = kolory.kolory.length
+                    console.log(kolory.kolory)
+                    if (jk == 90) {
+                        sel = `Wybierz kolor pionka</br><select name="kolor" id="kolor" size=${kolory.kolory.length}>`
+                        for (i = 0; i < kolory.kolory.length; i++) {
+                            sel += ` <option value="${kolory.kolory[i]}">${kolory.kolory[i]}</option>`
+                        }
+
+                        document.getElementById("logowanie").innerHTML = `<h1>LOGOWANIE</h1>
+        <input id="login" name="login"></br></br>
+        `+ sel + `</select>
+        </br>
+        <button id="loguj" onclick=stop()>LOGUJ</button>
+        <button id="reset" onclick=ui.reset()>RESET</button></br></br>`
+                        jk = kolory.kolory.length
+
+                    } else if (jk != ile) {
+                        sel = `Wybierz kolor pionka</br><select name="kolor" id="kolor" size=${kolory.kolory.length}>`
+                        for (i = 0; i < kolory.kolory.length; i++) {
+                            sel += ` <option value="${kolory.kolory[i]}">${kolory.kolory[i]}</option>`
+                        }
+
+                        document.getElementById("logowanie").innerHTML = `<h1>LOGOWANIE</h1>
+        <input id="login" name="login"></br></br>
+        `+ sel + `</select>
+        </br>
+        <button id="loguj" onclick=stop()>LOGUJ</button>
+        <button id="reset" onclick=ui.reset()>RESET</button></br></br>`
+                        jk = kolory.kolory.length
+
+                    }
+
+
+                    //   game.nowatab(data)
+                    // game.drugiczeka()
+                }) // dane odpowiedzi z serwera
+                .catch(error => console.log(error));
+            if (sto) setTimeout(kolor, 100)
+
+
+
+        }
+
+        kolor()
+
+        function stop() {
+
+            sto = false
+            ui.loguj()
+        }
+    </script>
+</body>
+
+</html>
