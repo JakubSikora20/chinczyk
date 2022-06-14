@@ -166,26 +166,25 @@ class Game {
         let xx = -100
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
-                if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
-                    this.pionki[i][j] = 0
-                }
                 if (this.pionki[i][j] > 0) {
-
-                    let pionek = new Pionek(this.pionki[i][j])
-                    pionek.position.y = 5
-                    pionek.position.x = xx
-                    pionek.position.z = zz
-                    pionek.tablicai = i
-                    pionek.tablicaj = j
-                    pionek.poczx = xx
-                    pionek.poczz = zz
-                    pionek.ile = -1
-                    pionek.dom = "true"
-                    pionek.kolor = wybrany
-                    pionek.name = this.pionki[i][j]
-                    this.walec.push(pionek)
-                    this.scene.add(pionek)
-
+                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                        this.pionki[i][j] = 0
+                    } else {
+                        let pionek = new Pionek(this.pionki[i][j])
+                        pionek.position.y = 5
+                        pionek.position.x = xx
+                        pionek.position.z = zz
+                        pionek.tablicai = i
+                        pionek.tablicaj = j
+                        pionek.poczx = xx
+                        pionek.poczz = zz
+                        pionek.ile = -1
+                        pionek.dom = "true"
+                        pionek.kolor = wybrany
+                        pionek.name = this.pionki[i][j]
+                        this.walec.push(pionek)
+                        this.scene.add(pionek)
+                    }
                 }
                 xx += 20
             }
@@ -240,26 +239,25 @@ class Game {
         let xx = -100
         for (let i = 0; i < 11; i++) {
             for (let j = 0; j < 11; j++) {
-                if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
-                    this.pionki[i][j] = 0
-                }
                 if (this.pionki[i][j] > 0) {
-
-                    let pionek = new Pionek(this.pionki[i][j])
-                    pionek.position.y = 5
-                    pionek.position.x = xx
-                    pionek.position.z = zz
-                    pionek.tablicai = i
-                    pionek.tablicaj = j
-                    pionek.poczx = xx
-                    pionek.poczz = zz
-                    pionek.ile = -1
-                    pionek.dom = "true"
-                    pionek.kolor = wybrany
-                    pionek.name = this.pionki[i][j]
-                    this.walec.push(pionek)
-                    this.scene.add(pionek)
-
+                    if (this.pionki[i][j] != wybrany && this.pionki[i][j] != ko) {
+                        this.pionki[i][j] = 0
+                    } else {
+                        let pionek = new Pionek(this.pionki[i][j])
+                        pionek.position.y = 5
+                        pionek.position.x = xx
+                        pionek.position.z = zz
+                        pionek.tablicai = i
+                        pionek.tablicaj = j
+                        pionek.poczx = xx
+                        pionek.poczz = zz
+                        pionek.ile = -1
+                        pionek.dom = "true"
+                        pionek.kolor = wybrany
+                        pionek.name = this.pionki[i][j]
+                        this.walec.push(pionek)
+                        this.scene.add(pionek)
+                    }
                 }
                 xx += 20
             }
