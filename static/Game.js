@@ -7,12 +7,12 @@ class Game {
         this.time2
         this.pox
         this.poz
-        this.wygrana = 3
+        this.wygrana = 0
         this.klik = 0
         this.sec = 0
         this.min = 0
         this.nick
-        
+
         this.wyszed = 0
         this.geometr = new THREE.BoxGeometry(200, 200, 200);
         this.materia = new THREE.MeshPhongMaterial({
@@ -516,6 +516,7 @@ class Game {
             czas--
         } else {
             document.getElementById("pasek").innerHTML = `</br>` + "Czas twojego przeciwnika minął wygrałeś"
+            this.wyniki()
             document.getElementById('zegar').innerHTML = ""
         }
         this.time = setTimeout(() => {
@@ -529,6 +530,7 @@ class Game {
                 document.getElementById("pasek").innerHTML = `</br>` + "Teraz twoja kolej. Wykonaj ruch. Masz " + czas + " sekund"
             } else {
                 document.getElementById("pasek").innerHTML = `</br>` + "Twój czas minął. Przegrałeś"
+                this.wyniki()
                 document.getElementById('zegar').style.visibility = "visible"
                 document.getElementById('zegar').innerHTML = ""
                 this.scene.add(this.cub);
@@ -703,8 +705,8 @@ class Game {
     }
     genWyniki = (data) => {
         let dato = JSON.parse(data)
-let dat = dato.docsy
-       let tab = `<table>
+        let dat = dato.docsy
+        let tab = `<table>
     <tr>
        <td>Kto wygrał</td> <td>czas</td>
     </tr>`
