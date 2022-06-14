@@ -12,6 +12,7 @@ class Game {
         this.sec = 0
         this.min = 0
         this.nick
+        
         this.wyszed = 0
         this.geometr = new THREE.BoxGeometry(200, 200, 200);
         this.materia = new THREE.MeshPhongMaterial({
