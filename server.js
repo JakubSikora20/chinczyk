@@ -1,7 +1,7 @@
 var express = require("express");
 const { copyFileSync } = require("fs");
 var app = express()
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const Datastore = require('nedb')
 
